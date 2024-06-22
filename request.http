@@ -1,0 +1,22 @@
+### GET Product
+GET http://localhost:5000/api/v1/product?title=new
+### Create Product
+POST http://localhost:5000/api/v1/product
+Content-Type: application/json
+
+{"title": "New Product", "price": 19.99, "category": "dresses", "color": "red", "size": "l"}
+
+### Update product 
+PUT http://localhost:5000/api/v1/product/6674024fa0bf4602426d02de
+Content-Type: application/json
+
+{
+    "title":"Updated Title",
+    "price": 1000,
+    "category": "Tops",
+    "color": "Blue",
+    "size": "xl"
+}
+
+### Delete Product
+DELETE  http://localhost:5000/api/v1/product/6673f76238fcf9f61e9931d1
