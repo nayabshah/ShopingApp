@@ -100,7 +100,7 @@ const Header = () => {
           startIcon={<MdAddToPhotos />}
           onClick={handleOpen}
         >
-          Open modal
+          Add product
         </Button>
       </Stack>
       {open ? <AddProductModal open={open} setOpen={setOpen} /> : null}

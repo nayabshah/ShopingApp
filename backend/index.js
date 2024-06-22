@@ -16,7 +16,6 @@ const __dirname = path.resolve();
 
 app.use("/api/v1/product", productRouter);
 
-console.log(__dirname);
 // serve frontend
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "frontend/dist")));
