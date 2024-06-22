@@ -121,7 +121,9 @@ export const productsSlice = createSlice({
       .addCase(deleteProduct.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.products = null;
+        state.products = state.products.filter(
+          (product) => product._id !== action.payload.id
+        );
       })
       .addCase(deleteProduct.rejected, (state, action) => {
         state.isLoading = false;

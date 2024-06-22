@@ -4,10 +4,12 @@ import Stack from "@mui/material/Stack";
 import { MdAddToPhotos } from "react-icons/md";
 import Button from "@mui/material/Button";
 import { colors, categories, sizes } from "./filters";
+import IconButton from "@mui/material/IconButton";
+import { MdClear } from "react-icons/md";
 
 import AddProductModal from "./AddProductModal";
 import { useDispatch } from "react-redux";
-import { getProduct } from "../reducers/productReducers";
+import { getProduct, setProductsList } from "../reducers/productReducers";
 
 const Header = () => {
   const [category, setCategory] = useState("");
@@ -15,6 +17,7 @@ const Header = () => {
   const [size, setSize] = useState("");
   const [title, setTitle] = useState("");
   const [open, setOpen] = useState(false);
+  const [isFiltered, setIsFiltered] = useState(false);
   const handleOpen = () => setOpen(true);
 
   const dispatch = useDispatch();
@@ -55,10 +58,19 @@ const Header = () => {
                 title,
               })
             );
+            setIsFiltered(true);
           }}
         >
           Filter
         </button>
+        {isFiltered ? (
+          <IconButton
+            aria-label="delete"
+            onClick={() => dispatch(setProductsList(null))}
+          >
+            <MdClear />
+          </IconButton>
+        ) : null}
       </div>
       <div>
         <input

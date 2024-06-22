@@ -2,11 +2,17 @@ import React from "react";
 import { MdDelete } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { deleteProduct } from "../reducers/productReducers";
+import toast from "react-hot-toast";
 
 import EditProductModal from "./EditProduct";
 
 const ProductItem = ({ product }) => {
   const dispatch = useDispatch();
+  console.log(product._id);
+  const onDelete = () => {
+    dispatch(deleteProduct(product._id));
+    toast.success("Product Deleted");
+  };
   return (
     <div
       className="product"
@@ -23,9 +29,7 @@ const ProductItem = ({ product }) => {
         <p className="product-price">${product.price}</p>
 
         <button
-          onClick={() => {
-            dispatch(deleteProduct(product.id));
-          }}
+          onClick={onDelete}
           style={{
             backgroundColor: "red",
             padding: "5px",
